@@ -99,3 +99,8 @@
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq nrepl-hide-special-buffers t)
+(setq cider-repl-display-in-current-window t)
+(setq nrepl-buffer-name-show-port t)
+(winner-mode 1)
+(windmove-default-keybindings)
+(global-linum-mode 1)
