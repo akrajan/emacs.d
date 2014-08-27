@@ -1,0 +1,4 @@
+backups/*
+init.el~
+ac-comphist.dat
+*.*~
