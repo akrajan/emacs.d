@@ -29,11 +29,11 @@
 (add-to-list 'same-window-buffer-names "<em>nrepl</em>")
 
 ;; ;; General Auto-Complete
-;; (require 'auto-complete-config)
+(require 'auto-complete)
 ;; (setq ac-delay 0.3)
 ;; (setq ac-quick-help-delay 0.3)
 ;; (ac-config-default)
-;; (ac-set-trigger-key "C-c TAB")
+(ac-set-trigger-key "C-c TAB")
 
 ;; ;; ac-nrepl (Auto-complete for the nREPL)
 (require 'ac-nrepl)
@@ -51,6 +51,9 @@
 ;; ;; paredit
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+(add-hook 'lisp-interaction-mode-hook 'paredit-mode)
+(add-hook 'lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode 'paredit-mode)
 ;; ;; Show parenthesis mode
 (show-paren-mode 1)
 
@@ -89,6 +92,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ac-modes (quote (cider-repl-mode cider-mode emacs-lisp-mode lisp-mode lisp-interaction-mode slime-repl-mode c-mode cc-mode c++-mode go-mode java-mode malabar-mode clojure-mode clojurescript-mode scala-mode scheme-mode ocaml-mode tuareg-mode coq-mode haskell-mode agda-mode agda2-mode perl-mode cperl-mode python-mode ruby-mode lua-mode tcl-mode ecmascript-mode javascript-mode js-mode js2-mode php-mode css-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode xml-mode sgml-mode ts-mode sclang-mode verilog-mode qml-mode)))
+ '(global-auto-complete-mode t)
  '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -104,3 +109,7 @@
 (winner-mode 1)
 (windmove-default-keybindings)
 (global-linum-mode 1)
+
+(load "~/.emacs.d/erc.el")
+(load "~/.emacs.d/my-extensions.el")
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
