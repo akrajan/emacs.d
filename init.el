@@ -29,6 +29,8 @@
 (add-to-list 'same-window-buffer-names "<em>nrepl</em>")
 
 ;; ;; General Auto-Complete
+(require 'auto-complete-config)
+(ac-config-default)
 (require 'auto-complete)
 ;; (setq ac-delay 0.3)
 ;; (setq ac-quick-help-delay 0.3)
@@ -112,4 +114,42 @@
 
 (load "~/.emacs.d/erc.el")
 (load "~/.emacs.d/my-extensions.el")
+
+; Projectile mode
+(projectile-global-mode)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
+
+(setq tab-width 2 indent-tabs-mode nil)
+
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+(global-set-key (kbd "C-x g") 'magit-status)
+
+(setq echo-keystrokes 0.1
+      use-dialog-box nil
+      visible-bell t)
+(show-paren-mode t)
+
+(ido-mode t)
+(setq ido-enable-flex-matching t
+      ido-use-virtual-buffers t)
+
+
+; Web mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(require 'ruby-block)
+(require 'ruby-end)
