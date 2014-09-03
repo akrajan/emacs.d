@@ -56,6 +56,7 @@
 (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
 (add-hook 'lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode 'paredit-mode)
+
 ;; ;; Show parenthesis mode
 (show-paren-mode 1)
 
@@ -153,3 +154,27 @@
 
 (require 'ruby-block)
 (require 'ruby-end)
+(define-key projectile-rails-mode-map (kbd "s-m")   'projectile-rails-find-model)
+(define-key projectile-rails-mode-map (kbd "s-c")   'projectile-rails-find-controller)
+(define-key projectile-rails-mode-map (kbd "s-v")   'projectile-rails-find-view)
+(define-key projectile-rails-mode-map (kbd "s-RET") 'projectile-rails-goto-file-at-point)
+(define-key projectile-rails-mode-map (kbd "C-c g")  projectile-rails-mode-goto-map)
+
+
+
+; Javascript setup
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq js2-highlight-level 3)
+(define-key js-mode-map "{" 'paredit-open-curly)
+(define-key js-mode-map "}" 'paredit-close-curly-and-newline)
+(define-key js-mode-map "\"" 'paredit-doublequote)
+
+
+
+
+; Yasnippet
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140821.38")
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas-global-mode 1)
