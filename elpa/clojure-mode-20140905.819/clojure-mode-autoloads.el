@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (clojure-mode) "clojure-mode" "clojure-mode.el"
-;;;;;;  (21483 3018 0 0))
+;;;;;;  (21514 39589 0 0))
 ;;; Generated autoloads from clojure-mode.el
 
 (autoload 'clojure-mode "clojure-mode" "\
@@ -18,7 +18,7 @@ Major mode for editing Clojure code.
 
 ;;;***
 
-;;;### (autoloads nil nil ("clojure-mode-pkg.el") (21483 3018 649962
+;;;### (autoloads nil nil ("clojure-mode-pkg.el") (21514 39589 202831
 ;;;;;;  0))
 
 ;;;***

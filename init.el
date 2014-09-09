@@ -154,24 +154,28 @@
 
 (require 'ruby-block)
 (require 'ruby-end)
-(define-key projectile-rails-mode-map (kbd "s-m")   'projectile-rails-find-model)
-(define-key projectile-rails-mode-map (kbd "s-c")   'projectile-rails-find-controller)
-(define-key projectile-rails-mode-map (kbd "s-v")   'projectile-rails-find-view)
-(define-key projectile-rails-mode-map (kbd "s-RET") 'projectile-rails-goto-file-at-point)
-(define-key projectile-rails-mode-map (kbd "C-c g")  projectile-rails-mode-goto-map)
 
+(defun projectile-rails-bindings ()
+  (define-key projectile-rails-mode-map (kbd "s-m")   'projectile-rails-find-model)
+  (define-key projectile-rails-mode-map (kbd "s-c")   'projectile-rails-find-controller)
+  (define-key projectile-rails-mode-map (kbd "s-v")   'projectile-rails-find-view)
+  (define-key projectile-rails-mode-map (kbd "s-RET") 'projectile-rails-goto-file-at-point)
+  (define-key projectile-rails-mode-map (kbd "C-c g")  projectile-rails-mode-goto-map))
+
+(add-hook 'projectile-rails-mode-hook 'projectile-rails-bindings)
 
 
 ; Javascript setup
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
-(setq js2-highlight-level 3)
-(define-key js-mode-map "{" 'paredit-open-curly)
-(define-key js-mode-map "}" 'paredit-close-curly-and-newline)
-(define-key js-mode-map "\"" 'paredit-doublequote)
 
-
+(defun paredit-js-mode-init ()
+  (setq js2-highlight-level 3)
+  (define-key js-mode-map "{" 'paredit-open-curly)
+  (define-key js-mode-map "}" 'paredit-close-curly-and-newline)
+  (define-key js-mode-map "\"" 'paredit-doublequote))
+(add-hook 'js2-mode-hook 'paredit-js-mode-init)
 
 
 ; Yasnippet
