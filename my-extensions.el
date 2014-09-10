@@ -10,30 +10,35 @@
 
 (add-hook 'ruby-mode-hook 'ruby-forward-word-hook)
 
-
-(defun choose-directory (directory)
-  "sample that uses interactive to get a directory"
-  (interactive (list (read-directory-name "What directory? ")))
-  (message "You chose %s " (file-truename directory)))
-
-
 (require 'dash)
 
 (defun opt-buffer-filename (b)
   (if (buffer-file-name b)
       (file-truename (buffer-file-name b))))
 
+(defun get-buffer-files (&optional buffers)
+  (let ((buffers (or buffers (buffer-list))))
+    (mapcar (lambda (b)
+              (list b (opt-buffer-filename b)))
+            buffers)))
 
+(defun get-file-from-buffer-file (bf)
+  (cadr bf))
+
+(defun get-buffer-from-buffer-file (bf)
+  (car bf))
+
+(defun file-backed-buffers (&optional buffers)
+  (-filter 'get-file-from-buffer-file (get-buffer-files buffers)))
 
 (defun get-dir-buffers (dirname)
-  (let* ((buffer-files (mapcar (lambda (b)
-                                 (list b (opt-buffer-filename b)))
-                               (buffer-list)))
-         (with-files (-filter 'cadr buffer-files)))
-    (-map 'car with-files)))
+  (let* ((dirfile (file-truename dirname)))
+    (-filter (lambda (bf)
+            (string-prefix-p dirfile (get-file-from-buffer-file bf)))
+          (file-backed-buffers))))
 
 (defun kill-dir-buffers (directory)
   "sample that uses interactive to get a directory"
   (interactive (list (read-directory-name "What directory? ")))
-  (let ((buffers (get-dir-buffers directory)))
+  (let ((buffers (mapcar 'car (get-dir-buffers directory))))
     (mapc 'kill-buffer buffers)))

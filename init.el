@@ -55,7 +55,7 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
 (add-hook 'lisp-mode-hook 'paredit-mode)
-(add-hook 'emacs-lisp-mode 'paredit-mode)
+(add-hook 'emacs-lisp-mode 'enable-paredit-mode)
 
 ;; ;; Show parenthesis mode
 (show-paren-mode 1)
