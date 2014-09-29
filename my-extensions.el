@@ -43,13 +43,13 @@
             (not (string-prefix-p dirfile (get-file-from-buffer-file bf))))
           (file-backed-buffers))))
 
-(defun kill-dir-buffers (directory)
+(defun a/kill-dir-buffers (directory)
   "sample that uses interactive to get a directory"
   (interactive (list (read-directory-name "What directory? ")))
   (let ((buffers (mapcar 'car (get-dir-buffers directory))))
     (mapc 'kill-buffer buffers)))
 
-(defun kill-except-dir-buffers (directory)
+(defun a/kill-except-dir-buffers (directory)
   "sample that uses interactive to get a directory"
   (interactive (list (read-directory-name "What directory? ")))
   (let ((buffers (mapcar 'car (except-dir-buffers directory))))

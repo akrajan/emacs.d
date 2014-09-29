@@ -61,7 +61,13 @@
 (show-paren-mode 1)
 
 ;; ;; rainbow delimiters
-(global-rainbow-delimiters-mode)
+;; (global-rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'ruby-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'emacs-lisp-mode 'rainbow-delimiters-mode)
 
 ;; ;; Noctilus Theme
 (load-theme 'zenburn t)
@@ -154,6 +160,8 @@
 
 (require 'ruby-block)
 (require 'ruby-end)
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\Gemfile\\'" . ruby-mode))
 
 (defun projectile-rails-bindings ()
   (define-key projectile-rails-mode-map (kbd "s-m")   'projectile-rails-find-model)
