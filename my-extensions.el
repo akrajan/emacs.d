@@ -54,3 +54,8 @@
   (interactive (list (read-directory-name "What directory? ")))
   (let ((buffers (mapcar 'car (except-dir-buffers directory))))
     (mapc 'kill-buffer buffers)))
+
+(defun a/uuid ()
+  (interactive)
+  (shell-command "uuidgen" t))
+
