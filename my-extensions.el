@@ -58,4 +58,4 @@
 (defun a/uuid ()
   (interactive)
   (shell-command "uuidgen" t))
-
+(setq twittering-use-master-password t)

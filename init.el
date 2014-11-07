@@ -177,12 +177,14 @@
   (define-key projectile-rails-mode-map (kbd "C-c g")  projectile-rails-mode-goto-map))
 
 (add-hook 'projectile-rails-mode-hook 'projectile-rails-bindings)
+(add-to-list 'auto-mode-alist '("\\log\\$", auto-revert-tail-mode))
 
 
 ; Javascript setup
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq js2-highlight-level 3)
 
 (defun paredit-js-mode-init ()
   (setq js2-highlight-level 3)
