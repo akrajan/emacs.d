@@ -198,3 +198,5 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140821.38")
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas-global-mode 1)
+
+(setq server-socket-dir "~/.emacs.d/server")
